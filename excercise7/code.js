@@ -2,7 +2,7 @@ const http = require('http');
 
 function getTest(url, callback) {
   const options = {
-    host: 'url',
+    host: url,
   };
   http.get(options, (response) => {
     response.setEncoding('utf8');
