@@ -10,8 +10,8 @@ describe('When url is', () => {
       }
     });
   });
-  it('absolutelydoesnotexist.com', () => {
-    httpGet('www.absolutelydoesnotexist.com', (data) => {
+  it('fsdfsdfsdfsfsdf.com', () => {
+    httpGet('www.sfsfsfsfdsfsdf.com', (data) => {
       expect(data).toBeFalsy();
     });
   });
