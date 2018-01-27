@@ -6,6 +6,7 @@ const options = {
   host: 'localhost',
   path: '/',
   port: dt.port,
+  method: 'post',
 };
 
 describe('The server should', () => {
@@ -23,7 +24,7 @@ describe('The server should', () => {
     const input = 'hello';
     const expectedOutput = 'HELLO';
     options.body = input;
-    http.post(options, (res) => {
+    http.request(options, (res) => {
       const bodyChunks = [];
       res.on('data', (chunk) => {
         bodyChunks.push(chunk);
@@ -34,18 +35,52 @@ describe('The server should', () => {
       });
     });
   });
-/*
-  it('return a string with non zero length', () => {
-    http.post(options, (res) => {
+
+  it('take empty string and return empty string', () => {
+    const input = '';
+    const expectedOutput = '';
+    options.body = input;
+    http.request(options, (res) => {
       const bodyChunks = [];
       res.on('data', (chunk) => {
         bodyChunks.push(chunk);
       }).on('end', () => {
         const body = Buffer.concat(bodyChunks).toString();
-        expect(body.length > 0).toBeTruthy();
+        expect(body).toBe(expectedOutput);
         dt.stopServer();
       });
     });
   });
-  */
+
+  it('take 123 and return 123', () => {
+    const input = '';
+    const expectedOutput = '';
+    options.body = input;
+    http.request(options, (res) => {
+      const bodyChunks = [];
+      res.on('data', (chunk) => {
+        bodyChunks.push(chunk);
+      }).on('end', () => {
+        const body = Buffer.concat(bodyChunks).toString();
+        expect(body).toBe(expectedOutput);
+        dt.stopServer();
+      });
+    });
+  });
+
+  it('take AAA and return AAA', () => {
+    const input = '';
+    const expectedOutput = '';
+    options.body = input;
+    http.request(options, (res) => {
+      const bodyChunks = [];
+      res.on('data', (chunk) => {
+        bodyChunks.push(chunk);
+      }).on('end', () => {
+        const body = Buffer.concat(bodyChunks).toString();
+        expect(body).toBe(expectedOutput);
+        dt.stopServer();
+      });
+    });
+  });
 });
