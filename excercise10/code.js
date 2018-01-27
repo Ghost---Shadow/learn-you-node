@@ -16,7 +16,7 @@ let server;
 function startServer() {
   server = net.createServer((socket) => {
     socket.end(getDateTime());
-  });
+  }).on('error', console.error);
   server.listen(port);
 }
 function stopServer() {

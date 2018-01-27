@@ -3,7 +3,7 @@ const ls = require('./code');
 describe('The directory should', () => {
   const ext = 'txt';
   it('have two files', () => {
-    const expected = ['test1.txt', 'test2.txt'];
+    const expected = ['test1.txt', 'test2.txt', 'test3.txt'];
     let i = 0;
     function callback(err, data) {
       expect(data).toBe(expected[i]);
