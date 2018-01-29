@@ -13,7 +13,7 @@ function ls(dirPath, ext, callback) {
   });
 }
 module.exports = ls;
-
+/*
 ls(process.argv[2], process.argv[3], (err, data) => {
   if (!err) { console.log(data); }
-});
+}); */

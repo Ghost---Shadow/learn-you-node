@@ -18,4 +18,4 @@ function getTest(url, callback) {
 }
 
 module.exports = getTest;
-// getTest(process.argv[2], console.log);
+getTest(process.argv[2], console.log);
