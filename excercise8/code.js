@@ -1,10 +1,7 @@
 const http = require('http');
 
 function getTest(url, callback) {
-  const options = {
-    host: url,
-  };
-  http.get(options, (response) => {
+  http.get(url, (response) => {
     response.setEncoding('utf8');
     let totalString = '';
     response.on('data', (data) => {
