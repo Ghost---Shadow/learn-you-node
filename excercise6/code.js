@@ -1,5 +1,5 @@
-const ls = require('../excercise5/code');
+const modular = require('./util');
 
-ls(process.argv[2], process.argv[3], (err, data) => {
-  if (!err) { console.log(data); }
+modular(process.argv[2], process.argv[3], (err, data) => {
+  data.forEach(fileName => console.log((fileName)));
 });
