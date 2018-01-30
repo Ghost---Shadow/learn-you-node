@@ -18,12 +18,12 @@ describe('The server should', () => {
     dt.stopServer();
   });
 
-  it('handle the parsetime endpoint', () => {
+  it('handle the parsetime endpoint', (done) => {
     options.path = '/api/parsetime?iso=2013-08-10T12:10:15.474Z';
     const expectedOutput = {
-      hour: 12,
-      minute: 10,
-      second: 15,
+      hour: '12',
+      minute: '10',
+      second: '15',
     };
 
     http.request(options, (response) => {
@@ -34,12 +34,13 @@ describe('The server should', () => {
 
       response.on('end', () => {
         const receivedObject = JSON.parse(body);
-        expect(receivedObject).toBe(expectedOutput);
+        expect(receivedObject).toEqual(expectedOutput);
+        done();
         dt.stopServer();
       });
     }).end();
   });
-  it('handle the unixtime endpoint', () => {
+  it('handle the unixtime endpoint', (done) => {
     options.path = '/api/unixtime';
     const expectedOutput = /\d+/;
 
@@ -51,7 +52,8 @@ describe('The server should', () => {
 
       response.on('end', () => {
         const receivedObject = JSON.parse(body);
-        expect(receivedObject.unixtime).toMatch(expectedOutput);
+        expect(String(receivedObject.unixtime)).toMatch(expectedOutput);
+        done();
         dt.stopServer();
       });
     }).end();

@@ -1,4 +1,4 @@
-/*
+
 const http = require('http');
 
 const port = Number(process.argv[2]) || 8080;
@@ -26,14 +26,14 @@ function startServer() {
   server = http.createServer((request, response) => {
     response.writeHead(200, { 'Content-Type': 'application/json' });
     const parsedUrl = url.parse(request.url);
+    // console.log('query', parsedUrl.query);
     let jObj;
-    if (parsedUrl.query.indexOf('parsetime') > -1) {
+    if (parsedUrl.query) {
       jObj = parseTime(parsedUrl.query);
-    } else if (parsedUrl.query.indexOf('unixtime') > -1) {
+    } else {
       jObj = unixTime();
     }
-    response.write(JSON.stringify(jObj));
-    response.end();
+    response.end(JSON.stringify(jObj));
   }).on('error', console.error);
   server.listen(port);
 }
@@ -48,8 +48,8 @@ module.exports.startServer = startServer;
 module.exports.stopServer = stopServer;
 module.exports.server = server;
 module.exports.port = port;
-*/
 
+/*
 const http = require('http');
 const url = require('url');
 
@@ -91,3 +91,4 @@ const server = http.createServer((request, response) => {
 server.listen(process.argv[2]);
 module.exports.getUnix = getUnix;
 module.exports.getISO = getISO;
+*/
